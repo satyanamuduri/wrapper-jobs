@@ -1,0 +1,8 @@
+{
+    "title_keywords": ["embedded", "software engineer", "C++", "firmware"],
+    "must_have_skills": ["C++", "embedded", "linux"],
+    "nice_to_have_skills": ["python", "RTOS", "git", "CI/CD", "jenkins", "cmake", "gtest"],
+    "exclude_keywords": ["manager", "director"],
+    "max_experience_years": 10,
+    "preferred_locations": ["Stockholm", "Remote"]
+}
