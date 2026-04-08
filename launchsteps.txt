@@ -1,0 +1,56 @@
+## Step 3: Install and test
+
+bash
+# Install Python dependencies
+cd ~/job-agent
+pip3 install -r requirements.txt
+
+# Make wrapper executable
+chmod +x notify_wrapper.sh
+
+# Test manually first
+python3 job_agent.py "embedded C++ developer" -l "Stockholm"
+
+
+## Step 4: Enable auto-run every 2 hours
+
+bash
+launchctl load ~/Library/LaunchAgents/com.jobagent.plist
+
+
+## Step 5: Verify it's running
+
+bash
+# Check it's scheduled
+launchctl list | grep jobagent
+
+# Check logs
+cat /tmp/jobagent.log
+
+# Check results
+cat /tmp/jobs_latest.json
+
+
+## Useful commands
+
+bash
+# Stop the scheduler
+launchctl unload ~/Library/LaunchAgents/com.jobagent.plist
+
+# Run manually anytime
+cd ~/job-agent
+python3 job_agent.py "C++ developer" -l "Remote" --min-score 40
+
+# Change search terms — edit notify_wrapper.sh line 3
+# Change your skills/criteria — edit profile.json
+
+
+Your project folder should look like:
+~/job-agent/
+├── job_agent.py
+├── notify_wrapper.sh
+├── profile.json
+└── requirements.txt
+
+~/Library/LaunchAgents/
+└── com.jobagent.plist
